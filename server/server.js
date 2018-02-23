@@ -17,6 +17,19 @@ serverIo.on('connection',(socket)=>{
 
     console.log('New User Connected..');
 
+
+    socket.emit('newMessage',{
+      from :'someone@ca.com',
+      msg :'do the agile',
+      createdAt : new Date().getTime.toString()
+
+    });
+
+    socket.on('createMessage',function(data){
+        console.log('create Message from client',data);
+   });
+
+
     socket.on('disconnect',function(){
         console.log('User discconnect');
     });
