@@ -18,19 +18,26 @@ serverIo.on('connection',(socket)=>{
     console.log('New User Connected..');
 
 
-//   socket.emit('newMessage',{
-//       from :'someone@ca.com',
-//       msg :'do the agile',
-//       createdAt : new Date().getTime.toString()
+  socket.emit('newMessage',{
+     from :'Admin',
+     text :'Welcome to the Group',
+      createdAt : new Date().getTime()
+    });  
+    
+    socket.broadcast.emit('newMessage',{
+        from :'Admin',
+        text : 'New User joined',
+        createdAt : new Date().getTime()
 
-//     });  
+   });
 
     socket.on('createMessage',function(data){
         console.log('create Message from client',data);
 
         serverIo.emit('newMessage',{
-             a:data.a,
-             b:data.b
+             from :data.from,
+             text :data.text,
+             createdAt : new Date().getTime()
 
         });
    });
