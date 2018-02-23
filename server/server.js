@@ -3,6 +3,7 @@ const path=require('path');
 const http=require('http');
 const socketIO=require('socket.io');
 
+var {generateMessage}=require('./utils/message');
 const publicPath=path.join(__dirname,'../public');
 console.log(publicPath);
 var port=process.env.PORT||3000;
@@ -17,29 +18,15 @@ serverIo.on('connection',(socket)=>{
 
     console.log('New User Connected..');
 
+  socket.emit('newMessage',generateMessage('Admin','Welcome to the Group')
+    );  
 
-  socket.emit('newMessage',{
-     from :'Admin',
-     text :'Welcome to the Group',
-      createdAt : new Date().getTime()
-    });  
-    
-    socket.broadcast.emit('newMessage',{
-        from :'Admin',
-        text : 'New User joined',
-        createdAt : new Date().getTime()
-
-   });
+    socket.broadcast.emit('newMessage',generateMessage('Admin','New User joined'));
 
     socket.on('createMessage',function(data){
         console.log('create Message from client',data);
 
-        serverIo.emit('newMessage',{
-             from :data.from,
-             text :data.text,
-             createdAt : new Date().getTime()
-
-        });
+        serverIo.emit('newMessage',generateMessage(data.from,data.text));
    });
 
 
