@@ -1,32 +1,27 @@
-const expect=require('expect');
-var {generateMessage,generateLocationMessage}=require('./message');
+var expect = require('expect');
 
-describe('generate message function',()=>{
- it('should create a new message',()=>{
-     var from ='admin';
-    var text='hello all';
-    
-    var msg=generateMessage(from,text);
+var {generateMessage, generateLocationMessage} = require('./message');
 
-    expect(typeof msg.createdAt).toBe('number');
-    expect(msg).toMatchObject({from,text});
+describe('generateMessage', () => {
+  it('should generate correct message object', () => {
+    var from = 'Jen';
+    var text = 'Some message';
+    var message = generateMessage(from, text);
 
- })
-
+    expect(message.createdAt).toBeA('number');
+    expect(message).toInclude({from, text});
+  });
 });
 
-describe('generate location function',()=>{
-    it('should create a new coreect Location',()=>{
-       var lat ='123';
-       var lng='321';
-       var from='admin';
-       var url =`https://www.google.com/maps/?q=${lat},${lng}`;
-       var msg=generateLocationMessage(from,lat,lng);
-   
-      // expect(typeof msg.createdAt).toBe('number');
-       expect(msg).toMatchObject({from,url});
-      // expect(msg).toMatchObject({url})
-   
-    })
-   
-   });
+describe('generateLocationMessage', () => {
+  it('should generate correct location object', () => {
+    var from = 'Deb';
+    var latitude = 15;
+    var longitude = 19;
+    var url = 'https://www.google.com/maps?q=15,19';
+    var message = generateLocationMessage(from, latitude, longitude);
+
+    expect(message.createdAt).toBeA('number');
+    expect(message).toInclude({from, url});
+  });
+});

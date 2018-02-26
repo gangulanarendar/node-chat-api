@@ -1,41 +1,34 @@
+<!DOCTYPE html>
+
 <html>
+
 <head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
 
-        <style>
-                offline {
-                   
-                    color: red;
-                    
-                }
-                online {
-                   
-                   color: green;
-               }
-                </style>
+<body class="chat">
 
-</head> 
-<body>
+  <div class="chat__sidebar">
+    <h3>People</h3>
+    <div id="users"></div>
+  </div>
 
+  <div class="chat__main">
+    <ol id="messages" class="chat__messages"></ol>
 
-</script>
+    <div class="chat__footer">
+      <form id="message-form">
+        <input name="message" type="text" placeholder="Message" autofocus autocomplete="off"/>
+        <button>Send</button>
+      </form>
+      <button id="send-location">Send location</button>
+    </div>
+  </div>
 
-<p> welcome to the chat app  </p><div id="status">offline</div> 
-<div>
-<ol id="msglist">
-    
-</ol>
-</div>
-<form id="message-form">
-   <input type="text" id="vmsg" placeholder="enter ur msg" name="vmsg"></input>
-   <button>submit</button>
-</form>
-<button id="send-location">Send Location</button>
-<script src="/js/libs/jquery.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-<script src="/js/index.js"></script>
-
-
-
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/libs/jquery-3.1.0.min.js"></script>
+  <script src="/js/index.js"></script>
 </body>
 
 </html>

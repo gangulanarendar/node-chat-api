@@ -1,17 +1,17 @@
-var generateMessage=(from,text)=>{
+var generateMessage = (from, text) => {
   return {
-     from,
-     text,
-     createdAt: new Date().getTime()
-};
+    from,
+    text,
+    createdAt: new Date().getTime()
+  };
 };
 
-var generateLocationMessage=(from,lat,lng)=>{
+var generateLocationMessage = (from, latitude, longitude) => {
   return {
-     from,
-     url: `https://www.google.com/maps/?q=${lat},${lng}`,
-     createdAt: new Date().getTime()
-};
+    from,
+    url: `https://www.google.com/maps?q=${latitude},${longitude}`,
+    createdAt: new Date().getTime()
+  };
 };
 
-module.exports={generateMessage,generateLocationMessage};
+module.exports = {generateMessage, generateLocationMessage};
