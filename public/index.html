@@ -1,17 +1,41 @@
 <html>
 <head>
 
+        <style>
+                offline {
+                   
+                    color: red;
+                    
+                }
+                online {
+                   
+                   color: green;
+               }
+                </style>
 
 </head> 
 <body>
-<script src="/socket.io/socket.io.js"></script>
-<script src="/js/index.js">
-    
-
 
 
 </script>
-<p> welcome to the chat app</p>
+
+<p> welcome to the chat app  </p><div id="status">offline</div> 
+<div>
+<ol id="msglist">
+    
+</ol>
+</div>
+<form id="message-form">
+   <input type="text" id="vmsg" placeholder="enter ur msg" name="vmsg"></input>
+   <button>submit</button>
+</form>
+<button id="send-location">Send Location</button>
+<script src="/js/libs/jquery.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>
+
+
+
 </body>
 
 </html>

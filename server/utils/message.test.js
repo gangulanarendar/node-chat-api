@@ -1,5 +1,5 @@
 const expect=require('expect');
-var {generateMessage}=require('./message');
+var {generateMessage,generateLocationMessage}=require('./message');
 
 describe('generate message function',()=>{
  it('should create a new message',()=>{
@@ -14,3 +14,19 @@ describe('generate message function',()=>{
  })
 
 });
+
+describe('generate location function',()=>{
+    it('should create a new coreect Location',()=>{
+       var lat ='123';
+       var lng='321';
+       var from='admin';
+       var url =`https://www.google.com/maps/?q=${lat},${lng}`;
+       var msg=generateLocationMessage(from,lat,lng);
+   
+      // expect(typeof msg.createdAt).toBe('number');
+       expect(msg).toMatchObject({from,url});
+      // expect(msg).toMatchObject({url})
+   
+    })
+   
+   });
